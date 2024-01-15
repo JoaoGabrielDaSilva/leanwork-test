@@ -1,0 +1,59 @@
+<div class="container">
+  <div id="dialog" *ngIf="modalVisible()">
+    <div class="dialog-container">
+      <p>Você desejar excluir o usuário?</p>
+      <button>Sim</button>
+      <button (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
+  <div class="table-container">
+    <table>
+      <div class="header">
+        <ng-icon (click)="goBack()" class="back-icon" name="ionArrowBack"
+          ><-</ng-icon
+        >
+        <caption>
+          Usuários Registrados
+        </caption>
+      </div>
+
+      @if (users.length > 0) {
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th></th>
+        <th></th>
+      </tr>
+      @for(user of users; track user.cpf) {
+      <tr>
+        <td>
+          {{ user.name }}
+        </td>
+        <td>
+          {{ user.cpf | mask : "000.000.000-00" }}
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+        <td>
+          {{ user.phone | mask : "(00) 00000-0000" }}
+        </td>
+        <td>
+          <ng-icon
+            class="edit-icon"
+            name="ionPencil"
+            (click)="openModal()"
+          ></ng-icon>
+        </td>
+        <td>
+          <span class="delete" (click)="openModal()">Excluir</span>
+        </td>
+      </tr>
+      } } @else {
+      <span>Sem usuários cadastrados</span>
+      }
+    </table>
+  </div>
+</div>
