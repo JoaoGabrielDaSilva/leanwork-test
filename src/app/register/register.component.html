@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="background"></div>
+  <form [formGroup]="userForm" (ngSubmit)="registerUser()">
+    <h1>Lean Cadastro</h1>
+    <text-input
+      name="name"
+      placeholder="Nome"
+      [control]="userForm.controls.name"
+      errorMessage="O nome deve ser válido"
+    />
+    <text-input
+      name="email"
+      placeholder="E-mail"
+      [control]="userForm.controls.email"
+      errorMessage="O e-mail deve ser válido"
+    />
+    <text-input
+      name="cpf"
+      placeholder="CPF"
+      [control]="userForm.controls.cpf"
+      mask="000.000.000-00"
+      errorMessage="O CPF deve ser válido"
+      required
+    />
+    <text-input
+      name="phone"
+      placeholder="Telefone"
+      [control]="userForm.controls.phone"
+      mask="(00) 00000-0000"
+      errorMessage="O telefone deve ser válido"
+    />
+    <div class="form-actions">
+      <app-button
+        text="Cadastrar"
+        [disabled]="userForm.errors?.['required']"
+      ></app-button>
+      <a [routerLink]="['/user-list']"> Usuários Cadastrados -> </a>
+    </div>
+  </form>
+</div>
+
+<router-outlet></router-outlet>
