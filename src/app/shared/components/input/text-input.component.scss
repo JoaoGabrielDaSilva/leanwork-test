@@ -1,0 +1,27 @@
+@import "variables.scss";
+
+input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid $input-no-focus-border-color;
+  outline: none;
+  padding: 8px 0px;
+  color: $input-no-focus-color;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom-color: $input-focus-border-color;
+    color: $input-focus-color;
+  }
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: $input-label-color;
+}
+
+.errorMessage {
+  color: red;
+}

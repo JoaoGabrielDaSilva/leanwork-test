@@ -1,0 +1,13 @@
+<div>
+  <label [for]="name">{{ placeholder }}</label>
+  <input
+    [id]="name"
+    type="text"
+    [formControl]="control"
+    [mask]="mask"
+    [required]="required"
+  />
+  <span *ngIf="control.errors?.['pattern']" class="errorMessage">
+    {{ errorMessage }}
+  </span>
+</div>
